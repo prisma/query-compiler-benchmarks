@@ -72,6 +72,7 @@ async function main() {
     prismaNativeQe.$disconnect(),
     prismaPgNapiQe.$disconnect(),
     prismaPgWasmQe.$disconnect(),
+    prismaPgQc.$disconnect(),
   ]);
 }
 
