@@ -5,8 +5,8 @@
     "build": "PRISMA_CLIENT_FORCE_WASM=true pnpm prisma generate"
   },
   "dependencies": {
-    "@prisma/adapter-pg": "6.4.1",
-    "@prisma/client": "6.4.1",
+    "@prisma/adapter-pg": "7.1.0",
+    "@prisma/client": "7.1.0",
     "common": "workspace:*",
     "pg": "^8.13.3",
     "prisma-common": "workspace:*"
@@ -15,7 +15,7 @@
     "@types/node": "^18.19.76",
     "@types/pg": "^8.11.11",
     "prettier": "^2.8.8",
-    "prisma": "6.4.1",
+    "prisma": "7.1.0",
     "tsx": "^3.14.0",
     "typescript": "^5.7.3"
   },

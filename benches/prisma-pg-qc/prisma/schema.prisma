@@ -1,12 +1,10 @@
 datasource db {
   provider = "postgres"
-  url      = env("DATABASE_URL")
 }
 
 generator client {
   provider        = "prisma-client-js"
   output          = "../client"
-  previewFeatures = ["driverAdapters"]
   engineType      = "client"
 }
 

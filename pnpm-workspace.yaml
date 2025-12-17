@@ -1,5 +1,7 @@
 packages:
-  - benches/*
+  - benches/common
+  - benches/prisma-common
+  - benches/prisma-pg-qc
 
 onlyBuiltDependencies:
   - '@prisma/client'

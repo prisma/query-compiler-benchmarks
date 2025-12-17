@@ -1,37 +1,36 @@
 import { run } from 'mitata';
 import arg from 'arg';
 
-import * as prismaNativeQeBench from 'prisma-native-qe';
-import * as prismaPgNapiBench from 'prisma-pg-napi-qe';
-import * as prismaPgWasmBench from 'prisma-pg-wasm-qe';
+// import * as prismaNativeQeBench from 'prisma-native-qe';
+// import * as prismaPgNapiBench from 'prisma-pg-napi-qe';
+// import * as prismaPgWasmBench from 'prisma-pg-wasm-qe';
 import * as prismaPgQcBench from './benches/prisma-pg-qc';
 import { Runner, generateCommonBenchmarks } from 'common';
 
-const [prismaNativeQe, prismaPgNapiQe, prismaPgWasmQe, prismaPgQc] =
-  await Promise.all([
-    prismaNativeQeBench.setup(),
-    prismaPgNapiBench.setup(),
-    prismaPgWasmBench.setup(),
-    prismaPgQcBench.setup(),
-  ]);
+const [prismaPgQc] = await Promise.all([
+  // prismaNativeQeBench.setup(),
+  // prismaPgNapiBench.setup(),
+  // prismaPgWasmBench.setup(),
+  prismaPgQcBench.setup(),
+]);
 
 async function main() {
   const runners: Runner<any>[] = [
-    {
-      name: 'Native QE with tokio-postgres',
-      benchRunner: prismaNativeQeBench.benches,
-      client: prismaNativeQe,
-    },
-    {
-      name: 'Native QE with pg driver adapter',
-      benchRunner: prismaPgNapiBench.benches,
-      client: prismaPgNapiQe,
-    },
-    {
-      name: 'Edge-compatible QE with pg driver adapter',
-      benchRunner: prismaPgWasmBench.benches,
-      client: prismaPgWasmQe,
-    },
+    // {
+    //   name: 'Native QE with tokio-postgres',
+    //   benchRunner: prismaNativeQeBench.benches,
+    //   client: prismaNativeQe,
+    // },
+    // {
+    //   name: 'Native QE with pg driver adapter',
+    //   benchRunner: prismaPgNapiBench.benches,
+    //   client: prismaPgNapiQe,
+    // },
+    // {
+    //   name: 'Edge-compatible QE with pg driver adapter',
+    //   benchRunner: prismaPgWasmBench.benches,
+    //   client: prismaPgWasmQe,
+    // },
     {
       name: 'Query compiler with pg driver adapter',
       benchRunner: prismaPgQcBench.benches,
@@ -68,11 +67,11 @@ async function main() {
 
   await run(JSON.parse(process.env.MITATA_CONFIG || '{}'));
 
-  await Promise.all([
-    prismaNativeQe.$disconnect(),
-    prismaPgNapiQe.$disconnect(),
-    prismaPgWasmQe.$disconnect(),
-  ]);
+  // await Promise.all([
+  //   prismaNativeQe.$disconnect(),
+  //   prismaPgNapiQe.$disconnect(),
+  //   prismaPgWasmQe.$disconnect(),
+  // ]);
 }
 
 main();
